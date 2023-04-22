@@ -25,14 +25,20 @@ def GetTaxRate():
 
 def CalcTaxAndNetPay(hours, hourlyrate, taxrate):
     ## complete the code to calculate grosspay, incometax, and net pay
-    
+    grosspay = hourlyrate * hours
+    incometax = taxrate * hours
+    netpay = grosspay - incometax
     return grosspay, incometax, netpay
 
 def printinfo(empname, hours, hourlyrate, grosspay, taxrate, incometax, netpay):
     print("Name:  ", empname) 
     print("Hours Worked: ", f"{hours:,.2f}")
     ## complete the code to display hourlyrate, grosspay, taxrate, incometax, and netpay with appropriate labels and formatting
-
+    print("Hourly Rate: " , hourlyrate)
+    print("Gross Pay: ", grosspay)
+    print("Tax Rate: ", taxrate)
+    print("Income Tax: ", incometax)
+    print("Net Pay: ", netpay)
     print()
 
 def PrintTotals(TotEmployees, TotHours, TotGrossPay, TotTax, TotNetPay):    
@@ -40,6 +46,9 @@ def PrintTotals(TotEmployees, TotHours, TotGrossPay, TotTax, TotNetPay):
     print(f"Total Number Of Employees: {TotEmployees}")
     print(f"Total Hours Worked: {TotHours:,.2f}")
     ## complete the code to display TotGrossPay, TotTax, and TotNetPay with appropriate lables and formatting
+    print(f"Total Gross Pay: {TotGrossPay}")
+    print(f"Total Tax: {TotTax}")
+    print(f"Total Net Pay: {TotNetPay}")
 
 
 if __name__ == "__main__":
@@ -55,17 +64,17 @@ if __name__ == "__main__":
             break
         ## call the function GetHoursWorked and assign the return value to hours
         hours = GetHoursWorked()
-        if (hours.upper() == "END"):
+        if hours == "END":
             break
         
         ## call the function GetHourlyRate and assign the return value to hourlyrate
         hourlyrate = GetHourlyRate()
-        if (hourlyrate.upper() = "END"):
+        if hourlyrate == "END":
             break
 
         ## call the function GetTaxRate and assign the return value to taxrate
         taxrate = GetTaxRate()
-        if (taxrate.upper() == "END"):
+        if taxrate == "END":
             break
         
         grosspay, incometax, netpay = CalcTaxAndNetPay(hours, hourlyrate, taxrate)
